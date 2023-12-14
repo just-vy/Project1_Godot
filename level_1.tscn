@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnma37bn03m01"]
+[gd_scene load_steps=7 format=3 uid="uid://cnma37bn03m01"]
 
 [ext_resource type="PackedScene" uid="uid://chlrvxrldbxo5" path="res://block.tscn" id="1_fcbit"]
 [ext_resource type="PackedScene" uid="uid://nmcb1uaaj2g0" path="res://jack.tscn" id="2_2n2np"]
+[ext_resource type="Texture2D" uid="uid://btv0sep56b0rb" path="res://icon.svg" id="3_3rje2"]
+[ext_resource type="Script" path="res://Icon.gd" id="4_2gvk4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2l5jn"]
 size = Vector3(10, 0.5, 10)
@@ -15,6 +17,7 @@ size = Vector3(10, 0.5, 10)
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4.86936, 6.62244)
 
 [node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.272629, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
@@ -28,7 +31,7 @@ transform = Transform3D(-2.25834e-08, -0.707107, 0.707107, 2.04891e-08, 0.707107
 shadow_enabled = true
 
 [node name="Jack" parent="." instance=ExtResource("2_2n2np")]
-transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 0, 0.736123, 3)
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 0, 0.504609, 3)
 
 [node name="Blocks" type="Node3D" parent="."]
 
@@ -43,3 +46,8 @@ transform = Transform3D(-0.238967, 0.965216, -0.106081, 0.970959, 0.238806, -0.0
 
 [node name="block4" parent="Blocks" instance=ExtResource("1_fcbit")]
 transform = Transform3D(0.124488, 0.649051, -0.75049, 0.719138, 0.462104, 0.518938, 0.683624, -0.604309, -0.409232, -0.837348, 12.2603, -0.553735)
+
+[node name="Icon" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.641924, 0)
+texture = ExtResource("3_3rje2")
+script = ExtResource("4_2gvk4")
