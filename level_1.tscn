@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnma37bn03m01"]
+
+[ext_resource type="PackedScene" uid="uid://chlrvxrldbxo5" path="res://block.tscn" id="1_fcbit"]
+[ext_resource type="PackedScene" uid="uid://nmcb1uaaj2g0" path="res://jack.tscn" id="2_2n2np"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2l5jn"]
+size = Vector3(10, 0.5, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1kttp"]
+size = Vector3(10, 0.5, 10)
+
+[node name="Level1" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4.86936, 6.62244)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_2l5jn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_1kttp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-2.25834e-08, -0.707107, 0.707107, 2.04891e-08, 0.707107, 0.707107, -1, 3.04568e-08, -1.48087e-09, 12, 12, 1)
+shadow_enabled = true
+
+[node name="Jack" parent="." instance=ExtResource("2_2n2np")]
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, 0, 0.736123, 3)
+
+[node name="Blocks" type="Node3D" parent="."]
+
+[node name="block" parent="Blocks" instance=ExtResource("1_fcbit")]
+transform = Transform3D(0.67634, 0.286662, 0.67852, 0.219133, 0.80115, -0.556901, -0.703239, 0.525341, 0.479033, 0, 5, 0)
+
+[node name="block2" parent="Blocks" instance=ExtResource("1_fcbit")]
+transform = Transform3D(0.0430906, 0.779994, 0.624301, 0.715401, 0.412096, -0.564249, -0.697383, 0.47094, -0.540253, 1.43331, 9.00575, -2.37626)
+
+[node name="block3" parent="Blocks" instance=ExtResource("1_fcbit")]
+transform = Transform3D(-0.238967, 0.965216, -0.106081, 0.970959, 0.238806, -0.014376, 0.0114573, -0.106436, -0.994254, 3.76664, 11.0662, -0.0215542)
+
+[node name="block4" parent="Blocks" instance=ExtResource("1_fcbit")]
+transform = Transform3D(0.124488, 0.649051, -0.75049, 0.719138, 0.462104, 0.518938, 0.683624, -0.604309, -0.409232, -0.837348, 12.2603, -0.553735)

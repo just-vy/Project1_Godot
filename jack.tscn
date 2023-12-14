@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://nmcb1uaaj2g0"]
+
+[ext_resource type="Script" path="res://jack.gd" id="1_ojy3x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8lp53"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_db5cc"]
+
+[node name="Jack" type="CharacterBody3D"]
+script = ExtResource("1_ojy3x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8lp53")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_db5cc")
