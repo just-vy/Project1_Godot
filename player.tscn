@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcx6676u4ntbn"]
+
+[ext_resource type="ArrayMesh" uid="uid://51vgp5bbxpbt" path="res://Assets/Models/beachball.res" id="1_58w1t"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xofrr"]
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.00448, 0, 0, 0, 1.00448, 0, 0, 0, 1.00448, 0, 0, 0)
+shape = SubResource("SphereShape3D_xofrr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.509, 0, 0, 0, 0.509, 0, 0, 0, 0.509, 0, 0, 0)
+mesh = ExtResource("1_58w1t")
