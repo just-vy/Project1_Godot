@@ -1,17 +1,23 @@
-[gd_scene load_steps=14 format=3 uid="uid://drx64dd1671kx"]
+[gd_scene load_steps=15 format=3 uid="uid://drx64dd1671kx"]
 
 [ext_resource type="PackedScene" uid="uid://bcx6676u4ntbn" path="res://player.tscn" id="1_exnbs"]
 [ext_resource type="PackedScene" uid="uid://bpaso24gkdman" path="res://box.tscn" id="1_p5eaj"]
-[ext_resource type="ArrayMesh" uid="uid://cvredpxdg3gqk" path="res://Assets/Models/woodfloor.res" id="1_rktrs"]
-[ext_resource type="PackedScene" uid="uid://g5h38tcssfuf" path="res://pill.tscn" id="2_6hm0o"]
-[ext_resource type="Script" path="res://player.gd" id="2_rwj86"]
 [ext_resource type="Texture2D" uid="uid://cadk1r6788ksd" path="res://icon.svg" id="5_6pplr"]
 [ext_resource type="Script" path="res://Sprite3D.gd" id="6_edwdj"]
 [ext_resource type="PackedScene" uid="uid://dovgky1sgalrr" path="res://goldcoin.tscn" id="8_m0xib"]
+[ext_resource type="PackedScene" uid="uid://b8pt5jyt1c1mm" path="res://red_pill.tscn" id="9_5pg18"]
 [ext_resource type="PackedScene" uid="uid://gctxn7wcye0t" path="res://silvercoin.tscn" id="9_h0hoy"]
+[ext_resource type="PackedScene" uid="uid://g5h38tcssfuf" path="res://bluepill.tscn" id="10_4sjqb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bhagd"]
 size = Vector3(10, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lt3wn"]
+albedo_color = Color(0.270588, 0, 1, 1)
+roughness = 0.05
+
+[sub_resource type="BoxMesh" id="BoxMesh_ukhjf"]
+size = Vector3(20, 2, 20)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_04ixg"]
 
@@ -21,13 +27,10 @@ sky_material = SubResource("ProceduralSkyMaterial_04ixg")
 [sub_resource type="Environment" id="Environment_fqipx"]
 background_mode = 2
 sky = SubResource("Sky_tgrus")
-ambient_light_color = Color(0.425477, 0.477098, 1, 1)
-reflected_light_source = 2
+ambient_light_source = 2
+ambient_light_color = Color(0.414836, 0.492597, 0.658369, 1)
 
 [node name="Level1" type="Node3D"]
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.989016, 0.147809, 0, -0.147809, 0.989016, 0, 2, 6.35)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 metadata/_edit_group_ = true
@@ -37,7 +40,8 @@ shape = SubResource("BoxShape3D_bhagd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-mesh = ExtResource("1_rktrs")
+material_override = SubResource("StandardMaterial3D_lt3wn")
+mesh = SubResource("BoxMesh_ukhjf")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(-3.67394e-08, 0.541811, -0.8405, 2.36833e-08, 0.8405, 0.541811, 1, 0, -4.37114e-08, -12.4528, 6.33031, 0.320476)
@@ -48,20 +52,25 @@ spot_range = 20.0
 [node name="Obstacle" type="Node3D" parent="."]
 
 [node name="Box3" parent="Obstacle" instance=ExtResource("1_p5eaj")]
-transform = Transform3D(-0.540945, -0.757411, 0.36566, -0.703117, 0.645822, 0.297558, -0.461525, -0.0961395, -0.881902, -2.28395, 6.15887, 0)
+transform = Transform3D(0.2552, -0.161397, 0.953322, -0.703117, 0.645822, 0.297558, -0.663702, -0.746234, 0.051333, -0.169084, 6.48623, 0)
 
-[node name="Box" parent="Obstacle" instance=ExtResource("1_p5eaj")]
+[node name="Box1" parent="Obstacle" instance=ExtResource("1_p5eaj")]
 transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 5.01037, 0)
 
 [node name="Box2" parent="Obstacle" instance=ExtResource("1_p5eaj")]
-transform = Transform3D(-0.624372, -0.360481, -0.692974, -0.5, 0.866025, 0, 0.600133, 0.346487, -0.720962, 3.04069, 3.77321, 0)
+transform = Transform3D(-0.624372, -0.360481, -0.692974, -0.5, 0.866025, 0, 0.600133, 0.346487, -0.720962, 3.04069, 3.77321, 1)
 
-[node name="Pill" parent="Obstacle" instance=ExtResource("2_6hm0o")]
-transform = Transform3D(0.245686, -0.969309, -0.00891894, 0.646976, 0.170824, -0.743129, 0.721845, 0.176806, 0.669089, 0, 4.74396, 3.35017)
+[node name="Box4" parent="Obstacle" instance=ExtResource("1_p5eaj")]
+transform = Transform3D(-0.863234, 0.277836, 0.421467, 0.204505, 0.955806, -0.211219, -0.461525, -0.0961395, -0.881902, 1.48482, 6.15887, -1)
+
+[node name="Box5" parent="Obstacle" instance=ExtResource("1_p5eaj")]
+transform = Transform3D(-0.540945, -0.757411, 0.36566, -0.703117, 0.645822, 0.297558, -0.461525, -0.0961395, -0.881902, -2.28395, 6.15887, 1)
+
+[node name="Box6" parent="Obstacle" instance=ExtResource("1_p5eaj")]
+transform = Transform3D(-0.895675, -0.444649, 0.00741619, -0.439804, 0.88814, 0.133343, -0.0658772, 0.11617, -0.991042, -1.47426, 3.68189, -2.00978)
 
 [node name="Player" parent="." instance=ExtResource("1_exnbs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.241748, 8.98938, 2)
-script = ExtResource("2_rwj86")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79804, 1.39717, 4.29894)
@@ -77,3 +86,9 @@ environment = SubResource("Environment_fqipx")
 
 [node name="SilverCoin" parent="." instance=ExtResource("9_h0hoy")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.90743, 0.853, 3.3681)
+
+[node name="RedPill" parent="." instance=ExtResource("9_5pg18")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -2.63129, 1.03091, 3)
+
+[node name="BluePill" parent="." instance=ExtResource("10_4sjqb")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 2.90043, 1.031, 2.62842)

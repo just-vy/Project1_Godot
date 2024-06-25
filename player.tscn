@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcx6676u4ntbn"]
+[gd_scene load_steps=5 format=3 uid="uid://bcx6676u4ntbn"]
 
 [ext_resource type="ArrayMesh" uid="uid://51vgp5bbxpbt" path="res://Assets/Models/beachball.res" id="1_58w1t"]
+[ext_resource type="Script" path="res://player.gd" id="1_tv0ro"]
 [ext_resource type="Script" path="res://MeshInstance3D.gd" id="2_kow68"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xofrr"]
 
 [node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_tv0ro")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.00448, 0, 0, 0, 1.00448, 0, 0, 0, 1.00448, 0, 0, 0)
@@ -15,3 +17,13 @@ shape = SubResource("SphereShape3D_xofrr")
 transform = Transform3D(0.502, 0, 0, 0, 0.502, 0, 0, 0, 0.502, 0, 0, 0)
 mesh = ExtResource("1_58w1t")
 script = ExtResource("2_kow68")
+
+[node name="CamearaController" type="Node3D" parent="."]
+top_level = true
+
+[node name="CameraTarget" type="Node3D" parent="CamearaController"]
+transform = Transform3D(1, 0, 0, 0, 0.935537, 0.35323, 0, -0.35323, 0.935537, 0, 0.958272, 2.32371)
+
+[node name="Camera3D" type="Camera3D" parent="CamearaController/CameraTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+current = true
