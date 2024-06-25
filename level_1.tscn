@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://drx64dd1671kx"]
+[gd_scene load_steps=14 format=3 uid="uid://drx64dd1671kx"]
 
 [ext_resource type="PackedScene" uid="uid://bcx6676u4ntbn" path="res://player.tscn" id="1_exnbs"]
 [ext_resource type="PackedScene" uid="uid://bpaso24gkdman" path="res://box.tscn" id="1_p5eaj"]
@@ -7,9 +7,22 @@
 [ext_resource type="Script" path="res://player.gd" id="2_rwj86"]
 [ext_resource type="Texture2D" uid="uid://cadk1r6788ksd" path="res://icon.svg" id="5_6pplr"]
 [ext_resource type="Script" path="res://Sprite3D.gd" id="6_edwdj"]
+[ext_resource type="PackedScene" uid="uid://dovgky1sgalrr" path="res://goldcoin.tscn" id="8_m0xib"]
+[ext_resource type="PackedScene" uid="uid://gctxn7wcye0t" path="res://silvercoin.tscn" id="9_h0hoy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bhagd"]
 size = Vector3(10, 1, 10)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_04ixg"]
+
+[sub_resource type="Sky" id="Sky_tgrus"]
+sky_material = SubResource("ProceduralSkyMaterial_04ixg")
+
+[sub_resource type="Environment" id="Environment_fqipx"]
+background_mode = 2
+sky = SubResource("Sky_tgrus")
+ambient_light_color = Color(0.425477, 0.477098, 1, 1)
+reflected_light_source = 2
 
 [node name="Level1" type="Node3D"]
 
@@ -52,5 +65,15 @@ script = ExtResource("2_rwj86")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79804, 1.39717, 4.29894)
+visible = false
 texture = ExtResource("5_6pplr")
 script = ExtResource("6_edwdj")
+
+[node name="GoldCoin" parent="." instance=ExtResource("8_m0xib")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.0148495, 0.853155, 4.49582)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fqipx")
+
+[node name="SilverCoin" parent="." instance=ExtResource("9_h0hoy")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.90743, 0.853, 3.3681)
