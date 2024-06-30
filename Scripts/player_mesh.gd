@@ -1,6 +1,6 @@
 extends MeshInstance3D
 
-const DEGREE = 2
+var DEGREE = 5.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,3 +17,12 @@ func _process(delta):
 		rotate_x(deg_to_rad(-DEGREE))
 	elif Input.is_action_pressed("ui_down"):
 		rotate_x(deg_to_rad(DEGREE))
+
+func _on_redpill_collected():
+	DEGREE += 1
+
+func _on_bluepill_collected():
+	DEGREE -= 1
+
+func _on_blue_pill_4_bluepill_collected():
+	pass # Replace with function body.

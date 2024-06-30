@@ -14,3 +14,4 @@ func _process(delta):
 
 func _on_body_entered(body):
 	queue_free()
+	get_tree().change_scene_to_file("res://win_screen.tscn")

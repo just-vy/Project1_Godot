@@ -2,6 +2,8 @@ extends Area3D
 
 const DEGREE = 2
 
+signal coin_collected
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -13,4 +15,7 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	queue_free()
+	if body.name == "Player":
+		coin_collected.emit()
+		print("collect coin")
+		queue_free()

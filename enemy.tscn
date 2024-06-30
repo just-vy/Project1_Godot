@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3qrxe7bhynup"]
+
+[ext_resource type="ArrayMesh" uid="uid://cohnd2uxfbpt2" path="res://Assets/Models/enemy.res" id="1_3e2ec"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_byp6b"]
+
+[node name="Enemy" type="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_byp6b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = ExtResource("1_3e2ec")

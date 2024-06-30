@@ -1,0 +1,140 @@
+[gd_scene load_steps=7 format=3 uid="uid://chj1yyaa7qm68"]
+
+[ext_resource type="FontFile" uid="uid://d1b8eggfknnw" path="res://Fonts/Super Friend Personal Use.ttf" id="1_q8u8w"]
+[ext_resource type="Script" path="res://Scripts/btnStart.gd" id="2_erqkn"]
+[ext_resource type="Script" path="res://Scripts/btnHelp.gd" id="3_pl2hi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8yeud"]
+font = ExtResource("1_q8u8w")
+font_size = 32
+font_color = Color(0.67451, 0, 0.133333, 1)
+outline_size = 10
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ses4k"]
+font = ExtResource("1_q8u8w")
+font_size = 100
+font_color = Color(0.811765, 1, 1, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qo1uo"]
+line_spacing = 0.0
+font = ExtResource("1_q8u8w")
+font_size = 30
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1921.0
+offset_bottom = 1077.0
+color = Color(7.21961e-07, 0.262568, 0.422778, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -641.0
+offset_top = -377.0
+offset_right = 641.0
+offset_bottom = -305.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "First Godot Project"
+label_settings = SubResource("LabelSettings_8yeud")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -641.0
+offset_top = -318.5
+offset_right = 641.0
+offset_bottom = -189.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Maze game"
+label_settings = SubResource("LabelSettings_ses4k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -61.0
+offset_right = 260.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_q8u8w")
+theme_override_font_sizes/font_size = 50
+action_mode = 0
+text = "Start"
+script = ExtResource("2_erqkn")
+
+[node name="Help" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = 78.0001
+offset_right = 260.0
+offset_bottom = 198.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_q8u8w")
+theme_override_font_sizes/font_size = 50
+action_mode = 0
+text = "Help"
+script = ExtResource("3_pl2hi")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -641.0
+offset_top = 306.0
+offset_right = 641.0
+offset_bottom = 378.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Made by JustVy"
+label_settings = SubResource("LabelSettings_qo1uo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Start" to="Start" method="_on_pressed"]
+[connection signal="pressed" from="Help" to="Help" method="_on_pressed"]
