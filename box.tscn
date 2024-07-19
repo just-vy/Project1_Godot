@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpaso24gkdman"]
+
+[ext_resource type="Texture2D" uid="uid://ttppvru7gyth" path="res://Textures/TactilePaving002_2K-JPG_NormalDX.jpg" id="1_cfb4g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_31282"]
+albedo_color = Color(1, 1, 0.266667, 1)
+roughness = 0.05
+normal_enabled = true
+normal_scale = 5.0
+normal_texture = ExtResource("1_cfb4g")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_s6hsj"]
+material = SubResource("StandardMaterial3D_31282")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_030rs"]
+
+[node name="Box" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_s6hsj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_030rs")

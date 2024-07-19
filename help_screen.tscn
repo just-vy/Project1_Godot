@@ -1,0 +1,149 @@
+[gd_scene load_steps=10 format=3 uid="uid://do1gt7th2ol0"]
+
+[ext_resource type="Texture2D" uid="uid://drnxhf74u4siq" path="res://Textures/goldcoin.png" id="1_5cov6"]
+[ext_resource type="FontFile" uid="uid://d1b8eggfknnw" path="res://Fonts/Super Friend Personal Use.ttf" id="1_30dda"]
+[ext_resource type="Texture2D" uid="uid://c6dpkc3t3ds35" path="res://Textures/silvercoin.png" id="2_rhem1"]
+[ext_resource type="Texture2D" uid="uid://cg57d3pi2idkn" path="res://Textures/enemy.png" id="3_vtph0"]
+[ext_resource type="Texture2D" uid="uid://csxp6asmy7s23" path="res://Textures/redpill.png" id="4_55nst"]
+[ext_resource type="Texture2D" uid="uid://213hh71jl21s" path="res://Textures/bluepill.png" id="5_s2hpr"]
+[ext_resource type="Texture2D" uid="uid://hgeuhbtdq4mo" path="res://Textures/player.png" id="7_08mg5"]
+[ext_resource type="Script" path="res://Scripts/btnBack.gd" id="8_jp2ra"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x4vil"]
+font = ExtResource("1_30dda")
+font_size = 30
+font_color = Color(0.104537, 0.109021, 0.104537, 1)
+outline_color = Color(0.851769, 0.851769, 0.851769, 1)
+shadow_size = 0
+shadow_color = Color(0.969137, 0.969137, 0.969137, 1)
+shadow_offset = Vector2(0, 0)
+
+[node name="HelpScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.731614, 0.618285, 0.297899, 1)
+
+[node name="GoldCoin" type="Sprite2D" parent="."]
+position = Vector2(200, 728)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_5cov6")
+
+[node name="lblGoldCoin" type="Label" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 693.0
+offset_right = 903.0
+offset_bottom = 774.0
+text = "Gold Coin: If you collect the gold coin,
+you'll win immediately"
+label_settings = SubResource("LabelSettings_x4vil")
+max_lines_visible = 2
+
+[node name="SilverCoin" type="Sprite2D" parent="."]
+position = Vector2(1045, 728)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_rhem1")
+
+[node name="lblSilverCoin" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1145.0
+offset_top = 693.0
+offset_right = 1748.0
+offset_bottom = 774.0
+text = "Silver Coin: If you collect 4 silver coins, 
+you'll win immediately"
+label_settings = SubResource("LabelSettings_x4vil")
+max_lines_visible = 2
+
+[node name="Enemy" type="Sprite2D" parent="."]
+position = Vector2(200, 428)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_vtph0")
+
+[node name="lblEnemy" type="Label" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 393.0
+offset_right = 903.0
+offset_bottom = 474.0
+text = "Enemy: If you touch your enemy. you'll lose.
+Try to avoid touching your enemy"
+label_settings = SubResource("LabelSettings_x4vil")
+max_lines_visible = 2
+
+[node name="RedPill" type="Sprite2D" parent="."]
+position = Vector2(1045, 128)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_55nst")
+
+[node name="lblRedPill" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1145.0
+offset_top = 83.0
+offset_right = 1807.0
+offset_bottom = 200.0
+text = "Red Pill: If you collect the red pills, each one'll
+gain you 20% of your current speed. Be careful
+if you're too fast, it'll be also a disadvantaged"
+label_settings = SubResource("LabelSettings_x4vil")
+max_lines_visible = 5
+
+[node name="BluePill" type="Sprite2D" parent="."]
+position = Vector2(1045, 428)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_s2hpr")
+
+[node name="lblBluePill" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1145.0
+offset_top = 387.0
+offset_right = 1907.0
+offset_bottom = 504.0
+text = "Blue Pill: If you collect the blue pills, each one'll
+reduce you 20% of your current speed. If you're
+too fast, it'll be also a blessing"
+label_settings = SubResource("LabelSettings_x4vil")
+max_lines_visible = 5
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(200, 128)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("7_08mg5")
+
+[node name="lblPlayer" type="Label" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 93.0
+offset_right = 774.0
+offset_bottom = 174.0
+text = "Player: press ⬆️⬇️⬅️➡️ on keyboard
+to move your character"
+label_settings = SubResource("LabelSettings_x4vil")
+max_lines_visible = 2
+
+[node name="btnBack" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -221.0
+offset_right = 260.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_30dda")
+theme_override_font_sizes/font_size = 50
+text = "Back"
+script = ExtResource("8_jp2ra")
+
+[connection signal="pressed" from="btnBack" to="btnBack" method="_on_pressed"]

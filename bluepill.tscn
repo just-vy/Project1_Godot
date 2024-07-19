@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://g5h38tcssfuf"]
+
+[ext_resource type="ArrayMesh" uid="uid://dx7pfpn83f3cr" path="res://Assets/Models/bluepill.res" id="1_iki5p"]
+[ext_resource type="Script" path="res://Scripts/bluepill.gd" id="1_itcoi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s7vwp"]
+radius = 0.075
+height = 0.3
+
+[node name="BluePill" type="Area3D"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_itcoi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_s7vwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000788652, -0.000559836, 0)
+mesh = ExtResource("1_iki5p")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

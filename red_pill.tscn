@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8pt5jyt1c1mm"]
+
+[ext_resource type="Script" path="res://Scripts/redpill.gd" id="1_4jc0h"]
+[ext_resource type="ArrayMesh" uid="uid://b1vv3lqophxg1" path="res://Assets/Models/redpill.res" id="1_iltyw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_26hpk"]
+radius = 0.075
+height = 0.3
+
+[node name="RedPill" type="Area3D"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_4jc0h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_26hpk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_iltyw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

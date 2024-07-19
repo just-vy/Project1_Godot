@@ -1,0 +1,310 @@
+[gd_scene load_steps=26 format=3 uid="uid://drx64dd1671kx"]
+
+[ext_resource type="Texture2D" uid="uid://ttppvru7gyth" path="res://Textures/TactilePaving002_2K-JPG_NormalDX.jpg" id="1_ebe5n"]
+[ext_resource type="PackedScene" uid="uid://bcx6676u4ntbn" path="res://player.tscn" id="2_xoqxm"]
+[ext_resource type="PackedScene" uid="uid://dovgky1sgalrr" path="res://goldcoin.tscn" id="4_50u3v"]
+[ext_resource type="MeshLibrary" uid="uid://bbqkqbs85l2m7" path="res://Assets/Models/wall1.tres" id="5_8p335"]
+[ext_resource type="PackedScene" uid="uid://b8pt5jyt1c1mm" path="res://red_pill.tscn" id="6_2fc6q"]
+[ext_resource type="PackedScene" uid="uid://g5h38tcssfuf" path="res://bluepill.tscn" id="7_lhfvn"]
+[ext_resource type="PackedScene" uid="uid://gctxn7wcye0t" path="res://silvercoin.tscn" id="8_5jqim"]
+[ext_resource type="PackedScene" uid="uid://d3qrxe7bhynup" path="res://enemy.tscn" id="9_tccxw"]
+[ext_resource type="Texture2D" uid="uid://c6dpkc3t3ds35" path="res://Textures/silvercoin.png" id="9_y7ckc"]
+[ext_resource type="FontFile" uid="uid://d1b8eggfknnw" path="res://Fonts/Super Friend Personal Use.ttf" id="10_2d5lk"]
+[ext_resource type="Script" path="res://Scripts/Counter.gd" id="11_s145j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_klgbt"]
+size = Vector3(30, 1, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvtvf"]
+albedo_color = Color(0.211765, 0.239216, 0.92549, 1)
+roughness = 0.05
+normal_enabled = true
+normal_scale = 5.0
+normal_texture = ExtResource("1_ebe5n")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_w8xyy"]
+material = SubResource("StandardMaterial3D_pvtvf")
+size = Vector3(30, 1, 30)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xnxf1"]
+viewport_path = NodePath("Player/SubViewport_health")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ind23"]
+viewport_path = NodePath("Player/SubViewport_jump")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6bbd"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+shadow_color = Color(0.266667, 0.266667, 0.266667, 0.6)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktopd"]
+bg_color = Color(0.313122, 0.778277, 0.812149, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwgbq"]
+bg_color = Color(0.180005, 0.180005, 0.180005, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+shadow_color = Color(0.266575, 0.266575, 0.266575, 0.6)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7xpul"]
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 1
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_04ixg"]
+
+[sub_resource type="Sky" id="Sky_tgrus"]
+sky_material = SubResource("ProceduralSkyMaterial_04ixg")
+
+[sub_resource type="Environment" id="Environment_fqipx"]
+background_mode = 2
+sky = SubResource("Sky_tgrus")
+ambient_light_source = 2
+ambient_light_color = Color(0.414836, 0.492597, 0.658369, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s0gxy"]
+font = ExtResource("10_2d5lk")
+font_size = 50
+font_color = Color(0.588235, 0.576471, 0.568627, 1)
+outline_size = 15
+outline_color = Color(0.301961, 0.294118, 0.290196, 1)
+shadow_size = 15
+shadow_color = Color(0.835294, 0.831373, 0.827451, 1)
+shadow_offset = Vector2(-2, 4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3r6fx"]
+font = ExtResource("10_2d5lk")
+font_size = 50
+font_color = Color(0.588235, 0.576471, 0.568627, 1)
+outline_size = 15
+outline_color = Color(0.301961, 0.294118, 0.290196, 1)
+shadow_size = 15
+shadow_color = Color(0.835294, 0.831373, 0.827451, 1)
+shadow_offset = Vector2(-2, 4)
+
+[node name="Level1" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_klgbt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_w8xyy")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-3.67394e-08, 0.541811, -0.8405, 2.36833e-08, 0.8405, 0.541811, 1, 0, -4.37114e-08, -12.4528, 6.33031, 0.320476)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 27.989
+
+[node name="Player" parent="." instance=ExtResource("2_xoqxm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.241748, 8.98938, 1.51732)
+
+[node name="Health" type="Sprite3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+billboard = 1
+texture = SubResource("ViewportTexture_xnxf1")
+
+[node name="Jump" type="Sprite3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.774994, 0)
+visible = false
+billboard = 1
+texture = SubResource("ViewportTexture_ind23")
+
+[node name="SubViewport_jump" type="SubViewport" parent="Player"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="JumpBar" type="ProgressBar" parent="Player/SubViewport_jump"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -5.0
+offset_right = 50.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_f6bbd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ktopd")
+max_value = 0.0
+show_percentage = false
+
+[node name="SubViewport_health" type="SubViewport" parent="Player"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="HealthBar" type="ProgressBar" parent="Player/SubViewport_health"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -5.0
+offset_right = 50.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_qwgbq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7xpul")
+step = 0.1
+value = 100.0
+show_percentage = false
+
+[node name="GoldCoin" parent="." instance=ExtResource("4_50u3v")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -10.633, 1, -13.5616)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fqipx")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("5_8p335")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(12, 65523, 0, 13, 65523, 0, 11, 65523, 0, 9, 65523, 0, 10, 65523, 0, 10, 65527, 0, 10, 65526, 0, 8, 65523, 0, 7, 65523, 0, 6, 65523, 0, 8, 65528, 0, 5, 65523, 0, 4, 65523, 0, 3, 65523, 0, 2, 65523, 0, 1, 65523, 0, 65523, 65525, 0, 0, 65523, 0, 12, 65524, 0, 11, 65525, 0, 12, 65525, 0, 10, 65525, 0, 11, 65527, 0, 12, 65527, 0, 12, 65528, 0, 12, 65529, 0, 12, 65530, 0, 12, 65531, 0, 7, 65525, 0, 6, 65525, 0, 5, 65525, 0, 4, 65525, 0, 3, 65525, 0, 8, 65527, 0, 8, 65526, 0, 8, 65525, 0, 2, 65525, 0, 2, 65526, 0, 65535, 65523, 0, 65533, 65523, 0, 65534, 65523, 0, 65532, 65523, 0, 65530, 65523, 0, 65531, 65523, 0, 65529, 65523, 0, 65528, 65523, 0, 0, 65524, 0, 0, 65525, 0, 65535, 65525, 0, 65534, 65525, 0, 65533, 65525, 0, 65532, 65525, 0, 65530, 65525, 0, 65531, 65525, 0, 65528, 65525, 0, 65528, 65524, 0, 65530, 65526, 0, 65530, 65527, 0, 65523, 65526, 0, 65523, 65527, 0, 65523, 65528, 0, 65524, 65528, 0, 65525, 65528, 0, 65528, 65526, 0, 65522, 65530, 0, 65523, 65530, 0, 65524, 65530, 0, 65522, 65532, 0, 65527, 65529, 0, 65526, 65530, 0, 65528, 65529, 0, 65529, 65529, 0, 65531, 65529, 0, 65530, 65529, 0, 65532, 65529, 0, 65532, 65528, 0, 65532, 65527, 0, 65533, 65527, 0, 65534, 65527, 0, 65535, 65527, 0, 0, 65527, 0, 8, 65529, 0, 9, 65529, 0, 10, 65529, 0, 10, 65530, 0, 10, 65531, 0, 7, 65529, 0, 6, 65529, 0, 6, 65528, 0, 6, 65527, 0, 5, 65527, 0, 4, 65528, 0, 4, 65527, 0, 13, 65533, 0, 12, 65533, 0, 11, 65533, 0, 10, 65533, 0, 9, 65533, 0, 8, 65533, 0, 8, 65532, 0, 65523, 65532, 0, 65524, 65532, 0, 65525, 65532, 0, 65526, 65532, 0, 65527, 65532, 0, 65528, 65532, 0, 65529, 65532, 0, 65529, 65531, 0, 65530, 65531, 0, 65531, 65531, 0, 65533, 65531, 0, 65532, 65531, 0, 65534, 65531, 0, 65534, 65530, 0, 65534, 65529, 0, 65535, 65529, 0, 0, 65529, 0, 2, 65527, 0, 2, 65528, 0, 2, 65529, 0, 2, 65530, 0, 3, 65530, 0, 4, 65530, 0, 4, 65531, 0, 4, 65532, 0, 5, 65532, 0, 8, 65531, 0, 6, 65532, 0, 6, 65531, 0, 65526, 65522, 0, 65526, 65523, 0, 65523, 65524, 0, 65523, 65523, 0, 65524, 65523, 0, 65525, 65523, 0, 65525, 65527, 0, 65525, 65526, 0, 65525, 65525, 0, 65526, 65525, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 65535, 65534, 0, 65534, 65534, 0, 65534, 65533, 0, 65533, 65533, 0, 65532, 65533, 0, 65531, 65533, 0, 65530, 65534, 0, 65529, 65534, 0, 65528, 65534, 0, 65527, 65534, 0, 65526, 65534, 0, 65525, 65534, 0, 65525, 65535, 0, 65525, 0, 0, 65526, 0, 0, 65527, 0, 0, 65528, 0, 0, 65528, 1, 0, 65522, 65534, 0, 65523, 65534, 0, 4, 65534, 0, 3, 65534, 0, 2, 65534, 0, 2, 65533, 0, 2, 65532, 0, 5, 65534, 0, 6, 65534, 0, 6, 65535, 0, 6, 0, 0, 6, 1, 0, 7, 65535, 0, 8, 65535, 0, 9, 65535, 0, 10, 65535, 0, 11, 65535, 0, 12, 65535, 0, 65522, 0, 0, 65523, 0, 0, 65523, 1, 0, 65523, 2, 0, 65525, 2, 0, 65524, 2, 0, 65526, 2, 0, 65526, 3, 0, 65530, 65535, 0, 65530, 0, 0, 65530, 2, 0, 65530, 1, 0, 65531, 65535, 0, 65532, 65535, 0, 65532, 0, 0, 65532, 1, 0, 65532, 2, 0, 12, 0, 0, 12, 1, 0, 12, 3, 0, 12, 2, 0, 11, 3, 0, 11, 1, 0, 10, 1, 0, 9, 1, 0, 9, 2, 0, 9, 3, 0, 9, 4, 0, 9, 5, 0, 10, 5, 0, 11, 5, 0, 12, 5, 0, 13, 5, 0, 65522, 4, 0, 65523, 4, 0, 65524, 4, 0, 65525, 5, 0, 65524, 5, 0, 65526, 5, 0, 65527, 5, 0, 65528, 5, 0, 65528, 4, 0, 65528, 3, 0, 65530, 4, 0, 65531, 4, 0, 65532, 4, 0, 65532, 3, 0, 7, 1, 0, 7, 2, 0, 7, 3, 0, 7, 4, 0, 7, 5, 0, 5, 1, 0, 4, 1, 0, 4, 0, 0, 3, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 0, 65535, 0, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65535, 2, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 65534, 3, 0, 65534, 4, 0, 2, 3, 0, 65535, 4, 0, 0, 4, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 5, 4, 0, 5, 5, 0, 13, 7, 0, 11, 7, 0, 12, 7, 0, 10, 7, 0, 10, 8, 0, 10, 9, 0, 11, 9, 0, 12, 9, 0, 12, 11, 0, 8, 11, 0, 8, 7, 0, 8, 8, 0, 8, 9, 0, 8, 10, 0, 7, 7, 0, 6, 7, 0, 6, 9, 0, 6, 8, 0, 6, 10, 0, 6, 11, 0, 6, 13, 0, 6, 12, 0, 8, 12, 0, 12, 10, 0, 12, 12, 0, 11, 12, 0, 10, 12, 0, 5, 12, 0, 4, 12, 0, 4, 11, 0, 4, 9, 0, 4, 10, 0, 4, 8, 0, 4, 7, 0, 65523, 7, 0, 65523, 8, 0, 65523, 9, 0, 65523, 10, 0, 65523, 11, 0, 65523, 13, 0, 65524, 11, 0, 65525, 11, 0, 65525, 9, 0, 65525, 10, 0, 65525, 8, 0, 65525, 7, 0, 65526, 7, 0, 65527, 7, 0, 65527, 8, 0, 65527, 9, 0, 65527, 10, 0, 65527, 11, 0, 65527, 12, 0, 65527, 13, 0, 65525, 13, 0, 65524, 13, 0, 65529, 13, 0, 65529, 12, 0, 65529, 11, 0, 65529, 10, 0, 65530, 10, 0, 65531, 10, 0, 65532, 10, 0, 65532, 9, 0, 65532, 8, 0, 65532, 7, 0, 65531, 8, 0, 65530, 8, 0, 65529, 8, 0, 65529, 7, 0, 65531, 6, 0, 65532, 6, 0, 65531, 13, 0, 65531, 12, 0, 65532, 12, 0, 65533, 12, 0, 65534, 12, 0, 65535, 12, 0, 0, 12, 0, 1, 12, 0, 2, 12, 0, 2, 11, 0, 2, 10, 0, 2, 9, 0, 2, 8, 0, 2, 6, 0, 2, 7, 0, 3, 5, 0, 2, 5, 0, 1, 6, 0, 0, 6, 0, 65535, 6, 0, 65534, 6, 0, 65534, 7, 0, 1, 8, 0, 0, 8, 0, 1, 10, 0, 65535, 10, 0, 0, 10, 0, 65534, 10, 0, 65534, 9, 0, 65521, 65525, 0, 65521, 65526, 0, 65521, 65523, 0, 65521, 65524, 0, 65521, 65522, 0, 65521, 65527, 0, 65521, 65528, 0, 65521, 65529, 0, 65521, 65530, 0, 65521, 65531, 0, 65521, 65532, 0, 65521, 65533, 0, 65521, 65534, 0, 65521, 65535, 0, 65521, 0, 0, 65521, 1, 0, 65521, 2, 0, 65521, 3, 0, 65521, 4, 0, 65521, 5, 0, 65521, 6, 0, 65521, 7, 0, 65521, 8, 0, 65521, 9, 0, 65521, 10, 0, 65521, 11, 0, 65521, 12, 0, 65521, 13, 0, 65521, 14, 0, 65522, 14, 0, 65523, 14, 0, 65524, 14, 0, 65525, 14, 0, 65526, 14, 0, 65527, 14, 0, 65528, 14, 0, 65529, 14, 0, 65530, 14, 0, 65531, 14, 0, 65532, 14, 0, 65533, 14, 0, 65534, 14, 0, 2, 14, 0, 65535, 14, 0, 0, 14, 0, 1, 14, 0, 65521, 65521, 0, 65522, 65521, 0, 65523, 65521, 0, 65524, 65521, 0, 65525, 65521, 0, 65527, 65521, 0, 65526, 65521, 0, 65528, 65521, 0, 65529, 65521, 0, 65530, 65521, 0, 65531, 65521, 0, 65533, 65521, 0, 65534, 65521, 0, 65535, 65521, 0, 0, 65521, 0, 1, 65521, 0, 65532, 65521, 0, 2, 65521, 0, 3, 65521, 0, 4, 65521, 0, 5, 65521, 0, 6, 65521, 0, 7, 65521, 0, 8, 65521, 0, 9, 65521, 0, 10, 65521, 0, 11, 65521, 0, 12, 65521, 0, 13, 65521, 0, 14, 65521, 0, 14, 65522, 0, 14, 65523, 0, 14, 65524, 0, 14, 65525, 0, 14, 65526, 0, 14, 65527, 0, 14, 65528, 0, 14, 65529, 0, 14, 65530, 0, 14, 65531, 0, 14, 65532, 0, 14, 65533, 0, 14, 65534, 0, 14, 65535, 0, 14, 0, 0, 14, 1, 0, 14, 7, 0, 14, 2, 0, 14, 3, 0, 14, 4, 0, 14, 5, 0, 14, 6, 0, 14, 8, 0, 14, 9, 0, 14, 10, 0, 14, 11, 0, 14, 12, 0, 14, 13, 0, 14, 14, 0, 13, 14, 0, 12, 14, 0, 11, 14, 0, 10, 14, 0, 9, 14, 0, 8, 14, 0, 7, 14, 0, 6, 14, 0, 5, 14, 0, 4, 14, 0, 3, 14, 0, 65526, 65529, 0, 65526, 65528, 0, 65527, 65528, 0)
+}
+
+[node name="RedPills" type="Node3D" parent="."]
+visible = false
+
+[node name="RedPill" parent="RedPills" instance=ExtResource("6_2fc6q")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -0.457306, 1.03091, 3.60388)
+visible = false
+
+[node name="RedPill2" parent="RedPills" instance=ExtResource("6_2fc6q")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -0.457306, 1.03091, -2.41106)
+visible = false
+
+[node name="RedPill3" parent="RedPills" instance=ExtResource("6_2fc6q")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -4.46071, 1.03091, 7.52195)
+visible = false
+
+[node name="RedPill4" parent="RedPills" instance=ExtResource("6_2fc6q")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 11.45, 1.03091, 2.53536)
+visible = false
+
+[node name="RedPill5" parent="RedPills" instance=ExtResource("6_2fc6q")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 5.52292, 1.03091, -7.23416)
+visible = false
+
+[node name="RedPill6" parent="RedPills" instance=ExtResource("6_2fc6q")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -11.4778, 1.03091, 10.209)
+visible = false
+
+[node name="BluePills" type="Node3D" parent="."]
+visible = false
+
+[node name="BluePill" parent="BluePills" instance=ExtResource("7_lhfvn")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -13.3953, 1.031, 13.507)
+visible = false
+
+[node name="BluePill2" parent="BluePills" instance=ExtResource("7_lhfvn")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 13.6407, 1.031, -13.4494)
+visible = false
+
+[node name="BluePill3" parent="BluePills" instance=ExtResource("7_lhfvn")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 7.43759, 1.031, 9.22762)
+visible = false
+
+[node name="BluePill4" parent="BluePills" instance=ExtResource("7_lhfvn")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -11.5017, 1.031, -8.51614)
+
+[node name="SilverCoins" type="Node3D" parent="."]
+
+[node name="SilverCoin" parent="SilverCoins" instance=ExtResource("8_5jqim")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -4.30148, 0.853, -1.45743)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("9_tccxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.366, 1, -13.5049)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+position = Vector2(1259, 98.125)
+scale = Vector2(0.120139, 0.120139)
+texture = ExtResource("9_y7ckc")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 371.0
+offset_top = 69.0
+offset_right = 411.0
+offset_bottom = 129.0
+grow_horizontal = 2
+text = "x"
+label_settings = SubResource("LabelSettings_s0gxy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Counter" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 426.0
+offset_top = 69.0
+offset_right = 466.0
+offset_bottom = 129.0
+grow_horizontal = 2
+text = "Q"
+label_settings = SubResource("LabelSettings_3r6fx")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("11_s145j")
+
+[connection signal="bluepillCollected" from="BluePills/BluePill" to="Player" method="_on_bluepill_collected"]
+[connection signal="bluepillCollected" from="BluePills/BluePill2" to="Player" method="_on_bluepill_collected"]
+[connection signal="bluepillCollected" from="BluePills/BluePill3" to="Player" method="_on_bluepill_collected"]
+[connection signal="bluepillCollected" from="BluePills/BluePill4" to="Player" method="_on_bluepill_collected"]
+[connection signal="coin_collected" from="SilverCoins/SilverCoin" to="Control/Counter" method="_on_silver_coin_collected"]
+[connection signal="body_entered" from="Enemies/Enemy" to="Player" method="_on_enemy_body_entered"]

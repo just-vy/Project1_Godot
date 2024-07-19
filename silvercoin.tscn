@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://gctxn7wcye0t"]
+
+[ext_resource type="Script" path="res://Scripts/silvercoin.gd" id="1_7b1a0"]
+[ext_resource type="ArrayMesh" uid="uid://bkg2dmk78busg" path="res://Assets/Models/silvercoin.res" id="1_770mo"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qr03k"]
+height = 0.15
+radius = 0.3
+
+[node name="SilverCoin" type="Area3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_7b1a0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_qr03k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("1_770mo")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
